@@ -2,8 +2,8 @@ A sample Celery app to reproduce the `PRECONDITION_FAILED` error when
 scheduling a new task.
 
 The cause of this is the lack of [publisher
-confirms](https://www.rabbitmq.com/docs/confirms#publisher-confirms) by default on
-celery's rabbitmq messages.
+confirms](https://www.rabbitmq.com/docs/confirms#publisher-confirms) (not enabled
+by default) on celery's rabbitmq messages.
 
 What happens is that a `.delay`/`.apply_async` call where we try to schedule a
 task with a lot of data (more than [rabbitmq's `max_message_size`
