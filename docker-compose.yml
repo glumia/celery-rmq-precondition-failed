@@ -1,0 +1,12 @@
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - rmq
+    volumes:
+      - .:/app
+
+  rmq:
+    image: rabbitmq:4.0.6-alpine
